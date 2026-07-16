@@ -227,8 +227,7 @@ document.querySelectorAll('.scripture-ref').forEach(button=>{
     modal.classList.add('open');document.body.style.overflow='hidden';closeButton.focus();
     try{
       const passages=await Promise.all(refs.map(getPassage));
-      content.innerHTML=passages.map(p=>'<div class="verse"><span class="verse-title">'+esc(p.reference)+' · KJV</span>'+esc(p.text).replace(/
-/g,'<br>')+'</div>').join('');
+      content.innerHTML=passages.map(p=>'<div class="verse"><span class="verse-title">'+esc(p.reference)+' · KJV</span>'+esc(p.text).replace(/\n/g,'<br>')+'</div>').join('');
     }catch(err){content.innerHTML='<p class="error">The Scripture text could not load. Check your internet connection and try again.</p>';}
   });
 });
